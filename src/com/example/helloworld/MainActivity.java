@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
     	
     }
     
+    // take a picture
     public void takePicture(View view){
 
     }
