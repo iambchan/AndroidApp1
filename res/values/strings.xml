@@ -8,6 +8,19 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">MyMessage</string>
     <string name="hello_world">Hello world!</string>
-    <string name="button_take_picture">Take Picture</string>
+    <string name="button_save_expense">Save Expense</string>
+    
+    <string name="expense_cost">Cost</string>
+    <string name="expense_location">Location</string>
+    <string name="expense_type">Type</string>
+    <string name="expense_date">Date</string>   
+    
+    <string-array name="expense_types">
+        <item>Food</item>
+        <item>Transportation</item>
+        <item>Miscellaneous</item>
+        <item>Home</item>
+        <item>Gift</item>
+    </string-array>
 
 </resources>
