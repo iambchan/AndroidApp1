@@ -8,12 +8,12 @@ public class Expense {
 	private String type;
 	private double cost;
 	private Date date;
-	private String location;
-	public String getLocation() {
-		return location;
+	private String description;
+	public String getDescription() {
+		return description;
 	}
 	public void setLocation(String location) {
-		this.location = location;
+		this.description = location;
 	}
 	public Date getDate() {
 		return date;

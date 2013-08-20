@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -17,9 +18,28 @@ public class ExpenseDao {
 		//values.put(ExpenseEntry.COLUMN_NAME_ENTRY_ID, expense.getId());
 		values.put(ExpenseEntry.COLUMN_NAME_COST, expense.getCost());
 		values.put(ExpenseEntry.COLUMN_NAME_TYPE, expense.getType());
-		values.put(ExpenseEntry.COLUMN_NAME_LOCATION, expense.getLocation());
+		values.put(ExpenseEntry.COLUMN_NAME_DESCRIPTION, expense.getDescription());
 		values.put(ExpenseEntry.COLUMN_NAME_DATE, expense.getDate().toString());
 		db.insert(ExpenseEntry.TABLE_NAME, null, values);
+	}
+	
+	// Find stuff in the database
+	public Cursor query(){
+		
+		// Define a projection that specifies which columns from the database
+		// you will actually use after this query.
+//		String[] projection = {
+//		    ExpenseEntry._ID,
+//		    ExpenseEntry.COLUMN_NAME_COST,
+//		    ExpenseEntry.COLUMN_NAME_TYPE,
+//		    ExpenseEntry.COLUMN_NAME_LOCATION,
+//		    ExpenseEntry.COLUMN_NAME_DATE
+//		    };
+		
+		String sortOrder = ExpenseEntry._ID + " DESC";
+		
+		// SELECT * FROM EXPENSES
+		return db.query(ExpenseEntry.TABLE_NAME, null, null, null, null, null, null);
 	}
 	
 	
@@ -32,7 +52,7 @@ public class ExpenseDao {
 		public static final String COLUMN_NAME_TYPE = "type";
 		public static final String COLUMN_NAME_COST = "cost";
 		public static final String COLUMN_NAME_DATE = "date";
-		public static final String COLUMN_NAME_LOCATION = "location";
+		public static final String COLUMN_NAME_DESCRIPTION = "location";
 		
 	}
 	
@@ -44,7 +64,7 @@ public class ExpenseDao {
 			+ ExpenseEntry.COLUMN_NAME_TYPE + TEXT_TYPE + COMMA_SEP 
 			+ ExpenseEntry.COLUMN_NAME_COST + TEXT_TYPE + COMMA_SEP
 			+ ExpenseEntry.COLUMN_NAME_DATE + " DATE" + COMMA_SEP
-			+ ExpenseEntry.COLUMN_NAME_LOCATION + TEXT_TYPE
+			+ ExpenseEntry.COLUMN_NAME_DESCRIPTION + TEXT_TYPE
 			+ " )";
 	
 	private static final String SQL_DELETE_ENTRIES = 

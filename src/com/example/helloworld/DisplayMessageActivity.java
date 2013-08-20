@@ -23,7 +23,8 @@ public class DisplayMessageActivity extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		Intent intent = getIntent();
-		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		int recordCount = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, -1);
+		String message = Integer.toString(recordCount);
 		
 		// create the text field
 		TextView textView = new TextView(this);
