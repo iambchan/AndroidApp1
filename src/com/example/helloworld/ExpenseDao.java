@@ -25,24 +25,17 @@ public class ExpenseDao {
 	
 	// Find stuff in the database
 	public Cursor query(){
-		
-		// Define a projection that specifies which columns from the database
-		// you will actually use after this query.
-//		String[] projection = {
-//		    ExpenseEntry._ID,
-//		    ExpenseEntry.COLUMN_NAME_COST,
-//		    ExpenseEntry.COLUMN_NAME_TYPE,
-//		    ExpenseEntry.COLUMN_NAME_LOCATION,
-//		    ExpenseEntry.COLUMN_NAME_DATE
-//		    };
-		
-		String sortOrder = ExpenseEntry._ID + " DESC";
-		
 		// SELECT * FROM EXPENSES
 		return db.query(ExpenseEntry.TABLE_NAME, null, null, null, null, null, null);
 	}
 	
 	
+	public void drop() {
+		db.execSQL(SQL_DELETE_ENTRIES);
+		// need to recreate the table with no entries
+		db.execSQL(SQL_CREATE_ENTRIES);
+		
+	}
 	
 	
 	

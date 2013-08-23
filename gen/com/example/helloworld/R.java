@@ -24,26 +24,32 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int edittext_rounded_corners=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int rounded_button=0x7f020002;
     }
     public static final class id {
-        public static final int FROM_CELL=0x7f09000e;
-        public static final int SCHEDULE=0x7f09000a;
-        public static final int Spinner_expense_type=0x7f090005;
-        public static final int TO_CELL=0x7f09000f;
-        public static final int TRAIN_CELL=0x7f09000d;
-        public static final int action_settings=0x7f090010;
-        public static final int button_add_new_expense=0x7f09000b;
-        public static final int button_change_date=0x7f090008;
-        public static final int button_save=0x7f090009;
-        public static final int button_show_expenses=0x7f09000c;
-        public static final int editText_Description=0x7f090001;
-        public static final int editText_cost=0x7f090003;
-        public static final int textView_cost=0x7f090002;
-        public static final int textView_date=0x7f090006;
-        public static final int textView_description=0x7f090000;
-        public static final int textView_type=0x7f090004;
-        public static final int text_date=0x7f090007;
+        public static final int Col_1=0x7f090011;
+        public static final int Col_2=0x7f090012;
+        public static final int Col_3=0x7f090013;
+        public static final int CostLabel=0x7f09000c;
+        public static final int DateLabel=0x7f09000b;
+        public static final int DescriptionLabel=0x7f09000d;
+        public static final int ExpenseTable=0x7f09000a;
+        public static final int action_settings=0x7f090014;
+        public static final int button_add_new_expense=0x7f09000f;
+        public static final int button_change_date=0x7f090002;
+        public static final int button_delete_data=0x7f090010;
+        public static final int button_save=0x7f090003;
+        public static final int button_show_expenses=0x7f09000e;
+        public static final int editText_Description=0x7f090005;
+        public static final int editText_cost=0x7f090007;
+        public static final int spinner_expense_types=0x7f090009;
+        public static final int textView_cost=0x7f090006;
+        public static final int textView_date=0x7f090000;
+        public static final int textView_description=0x7f090004;
+        public static final int textView_type=0x7f090008;
+        public static final int text_date=0x7f090001;
     }
     public static final class layout {
         public static final int activity_add_expense=0x7f030000;
