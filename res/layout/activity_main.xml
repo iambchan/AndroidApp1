@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/button_add_new_expense"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:onClick="showExpenses"
             android:background="@drawable/rounded_button"
             android:text="@string/button_view_expenses" />
@@ -26,22 +26,39 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="143dp"
+            android:layout_marginBottom="100dp"
             android:background="@drawable/rounded_button"
             android:onClick="addNewExpense"
             android:text="@string/button_add_expense" />
 
-        <Button
-            android:id="@+id/button_delete_data"
-            style="?android:attr/buttonStyleSmall"
+        <TextView
+            android:id="@+id/textView_totalMonthlyExpenses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/button_show_expenses"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="37dp"
-            android:background="@drawable/rounded_button"
-            android:onClick="deleteAllExpenses"
-            android:text="Delete All Data" />
+            android:layout_marginBottom="83dp"
+            android:text="Total Expenses This Month:"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textView_totalAmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView_totalMonthlyExpenses"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView_dollarSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView_totalAmt"
+            android:layout_alignBottom="@+id/textView_totalAmt"
+            android:layout_toLeftOf="@+id/button_add_new_expense"
+            android:text="$"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
 

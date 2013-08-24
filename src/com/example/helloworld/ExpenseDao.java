@@ -23,12 +23,24 @@ public class ExpenseDao {
 		db.insert(ExpenseEntry.TABLE_NAME, null, values);
 	}
 	
-	// Find stuff in the database
+	// Returns all expenses from database
 	public Cursor query(){
 		// SELECT * FROM EXPENSES
 		return db.query(ExpenseEntry.TABLE_NAME, null, null, null, null, null, null);
 	}
 	
+	public Cursor queryByMonth() {
+		//"SELECT * FROM EXPENSES WHERE DATE LIKE \"%Aug%\"";
+		return db.query(ExpenseEntry.TABLE_NAME, null,"date like ?" , new String[]{"%"+"Aug"+"%"+"2013"}, null, null, null);
+	}
+	
+	// Gets the cost column of all expenses in given month
+	public Cursor queryCurMonth_expenses(String month, String year) {
+		//"SELECT * FROM EXPENSES WHERE DATE LIKE \"%Aug%\"";
+		String[] colsToSelect = new String[] { ExpenseEntry.COLUMN_NAME_COST, ExpenseEntry.COLUMN_NAME_DATE };
+		return db.query(ExpenseEntry.TABLE_NAME, colsToSelect, "date like ?" , new String[]{"%"+month+"%"+year}, null, null, null);
+	}
+
 	
 	public void drop() {
 		db.execSQL(SQL_DELETE_ENTRIES);

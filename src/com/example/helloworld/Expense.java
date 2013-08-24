@@ -1,9 +1,6 @@
 package com.example.helloworld;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -46,7 +43,7 @@ public class Expense implements Parcelable {
 	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
@@ -88,13 +85,5 @@ public class Expense implements Parcelable {
 		pc.writeString(type);
 		pc.writeString(date.toString()); // this might be wrong..
 	}
-	
-//	public void readFromParcel(Parcel pc) {
-//		id = pc.readLong();
-//		description = pc.readString();
-//		cost = pc.readDouble();
-//		type = pc.readString();
-//		date = new Date();
-//	}
 	
 }

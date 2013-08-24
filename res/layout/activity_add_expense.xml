@@ -4,128 +4,147 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-       	android:focusableInTouchMode="true"
-       	android:onClick="onClick"
-       	tools:context=".AddExpenseActivity">
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/textView_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/expense_date"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-         <TextView
-            android:id="@+id/text_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView_date"
-            android:layout_below="@+id/textView_date"
-            android:layout_marginTop="15dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-         
-        <Button
-            android:id="@+id/button_change_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/button_save"
-            android:layout_marginTop="53dp"
-            android:onClick="showDatePickerDialog"
-            android:background="@drawable/rounded_button"
-            android:text="@string/button_change_date" />
-
-        <TextView
-            android:id="@+id/textView_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/button_change_date"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/expense_description"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-       <EditText
-            android:id="@+id/editText_Description"
-            android:background="@drawable/edittext_rounded_corners"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView_description"
-            android:layout_below="@+id/textView_description"
-            android:layout_marginRight="30dp"
-            android:ems="10"
-            android:inputType="text"
-            android:lines="1"
-            android:scrollHorizontally="true"
-            android:singleLine="true" >
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:onClick="onClick"
+            tools:context=".AddExpenseActivity" >
 
-            <requestFocus />
-        </EditText>
+            <TextView
+                android:id="@+id/textView_date"
+                style="@style/TextFieldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/expense_date"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-			android:id="@+id/textView_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText_Description"
-            android:layout_below="@+id/editText_Description"
-            android:layout_marginTop="15dp"
-            android:text="@string/expense_cost"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView_date"
+                android:layout_below="@+id/textView_date"
+                android:layout_marginTop="15dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <EditText
-            android:id="@+id/editText_cost"
-            android:background="@drawable/edittext_rounded_corners"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView_cost"
-            android:layout_below="@+id/textView_cost"
-            android:ems="10"
-            android:inputType="numberDecimal" />
+            <Button
+                android:id="@+id/button_change_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/button_save"
+                android:layout_marginTop="53dp"
+                android:background="@drawable/rounded_button"
+                android:onClick="showDatePickerDialog"
+                android:text="@string/button_change_date" />
 
+            <TextView
+                android:id="@+id/textView_description"
+                style="@style/TextFieldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/button_change_date"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/expense_description"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
+            <EditText
+                android:id="@+id/editText_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView_description"
+                android:layout_below="@+id/textView_description"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/edittext_rounded_corners"
+                android:ems="10"
+                android:inputType="text"
+                android:lines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true" >
 
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginRight="18dp"
-            android:onClick="saveExpense"
-            android:background="@drawable/rounded_button"
-            android:text="@string/button_save_expense" />
+                <!-- <requestFocus /> -->
+            </EditText>
 
-        <TextView
-            android:id="@+id/textView_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText_cost"
-            android:layout_below="@+id/editText_cost"
-            android:layout_marginTop="17dp"
-            android:text="@string/expense_type"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView_cost"
+                style="@style/TextFieldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editText_Description"
+                android:layout_below="@+id/editText_Description"
+                android:layout_marginTop="15dp"
+                android:text="@string/expense_cost"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Spinner
-            android:id="@+id/spinner_expense_types"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView_type"
-            android:layout_below="@+id/textView_type"
-            android:layout_marginTop="15dp"
-            android:spinnerMode="dialog"
-            android:entries="@array/expense_types" />
+            <EditText
+                android:id="@+id/editText_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView_cost"
+                android:layout_below="@+id/textView_cost"
+                android:background="@drawable/edittext_rounded_corners"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:maxLength="10" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textView_type"
+                style="@style/TextFieldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editText_cost"
+                android:layout_below="@+id/editText_cost"
+                android:layout_marginTop="17dp"
+                android:text="@string/expense_type"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spinner_expense_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView_type"
+                android:layout_below="@+id/textView_type"
+                android:layout_marginTop="15dp"
+                android:entries="@array/expense_types"
+                android:spinnerMode="dialog" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/spinner_expense_types"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button"
+                android:onClick="saveExpense"
+                android:text="@string/button_save_expense" />
+
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/button_save"
+                android:layout_alignBottom="@+id/button_save"
+                android:layout_alignLeft="@+id/spinner_expense_types"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button"
+                android:onClick="returnToMain"
+                android:text="@string/button_cancel" />
+        </RelativeLayout>
+    </ScrollView>
 
 </TableLayout>

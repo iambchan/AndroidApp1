@@ -22,16 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:name="com.example.helloworld.DisplayMessageActivity"
+            android:name="com.example.helloworld.DisplayExpensesActivity"
             android:label="@string/title_activity_display_message"
             android:parentActivityName="com.example.helloworld.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.myfirstapp.MainActivity" />
         </activity>
-        
         <activity
             android:name="com.example.helloworld.AddExpenseActivity"
             android:label="@string/title_activity_add_expense"
@@ -39,6 +37,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.myfirstapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.helloworld.ViewExpenseActivity"
+            android:label="@string/title_activity_view_expense" >
         </activity>
     </application>
 

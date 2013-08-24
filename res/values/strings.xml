@@ -2,16 +2,18 @@
 <resources>
 
     <string name="app_name">My Expense Tracker</string>
-    <string name="title_activity_add_expense">Add New Expese</string>
-    <string name="title_activity_display_message">MyMessage</string>
+    <string name="title_activity_add_expense">Add New Expense</string>
+    <string name="title_activity_display_message">Expense Summary</string>
+    <string name="title_activity_view_expense">Expense Details</string>
     <string name="action_settings">Settings</string>
+    <string name="action_delete_data">Delete All Data</string>
+    
     <string name="title_activity_main">MainActivity</string>
-  
     <string name="button_add_expense">Add New Expense</string>
     <string name="button_view_expenses">View Expenses</string>
-    
-    <string name="button_save_expense">Save Expense</string>
-    <string name="button_change_date">Change Date</string>
+    <string name="button_save_expense">Save</string>
+    <string name="button_change_date">Change</string>
+    <string name="button_cancel">Cancel</string>
     <string name="expense_cost">Cost:</string>
     <string name="expense_description">Description:</string>
     <string name="expense_type">Type:</string>
@@ -25,5 +27,7 @@
         <item>Gift</item>
         <item>Miscellaneous</item>
     </string-array>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

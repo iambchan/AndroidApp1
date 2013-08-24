@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".ViewExpenseActivity" >
+
+        <TextView
+            android:id="@+id/textView_date"
+            style="@style/TextFieldStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/expense_date"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView_date"
+            android:layout_below="@+id/textView_date"
+            android:layout_marginTop="15dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+ 
+
+        <TextView
+            android:id="@+id/textView_description"
+            style="@style/TextFieldStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text_date"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/expense_description"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editText_Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView_description"
+            android:layout_below="@+id/textView_description"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edittext_rounded_corners"
+            android:ems="10"
+            android:inputType="text"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView_cost"
+            style="@style/TextFieldStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText_Description"
+            android:layout_below="@+id/editText_Description"
+            android:layout_marginTop="15dp"
+            android:text="@string/expense_cost"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editText_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView_cost"
+            android:layout_below="@+id/textView_cost"
+            android:background="@drawable/edittext_rounded_corners"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="10" />
+
+        <TextView
+            android:id="@+id/textView_type"
+            style="@style/TextFieldStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText_cost"
+            android:layout_below="@+id/editText_cost"
+            android:layout_marginTop="17dp"
+            android:text="@string/expense_type"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/spinner_expense_types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView_type"
+            android:layout_below="@+id/textView_type"
+            android:layout_marginTop="15dp"
+            android:entries="@array/expense_types"
+            android:spinnerMode="dialog" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
