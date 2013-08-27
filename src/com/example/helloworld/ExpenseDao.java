@@ -23,6 +23,11 @@ public class ExpenseDao {
 		db.insert(ExpenseEntry.TABLE_NAME, null, values);
 	}
 	
+	public void update(ContentValues c, String id) {
+		String[] args = {id};
+		db.update(ExpenseEntry.TABLE_NAME, c, ExpenseEntry.COLUMN_NAME_ENTRY_ID + "=" + id, null);
+	}
+	
 	// Returns all expenses from database
 	public Cursor query(){
 		// SELECT * FROM EXPENSES

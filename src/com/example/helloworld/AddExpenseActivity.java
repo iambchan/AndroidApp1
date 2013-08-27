@@ -95,7 +95,6 @@ public class AddExpenseActivity extends Activity {
 		String cost_string = editText.getText().toString();
 		if(cost_string.length() > 1) {
 
-
 		double cost = Double.parseDouble(cost_string);
 		editText = (EditText) findViewById(R.id.editText_Description);
 		String description = editText.getText().toString();
