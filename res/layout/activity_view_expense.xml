@@ -6,8 +6,9 @@
     android:layout_height="fill_parent" >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -106,6 +107,28 @@
             android:entries="@array/expense_types"
             android:spinnerMode="dialog" />
 
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/spinner_expense_types"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="deleteEntry"
+            android:text="@string/button_delete" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/button_delete"
+            android:background="@drawable/rounded_button"
+            android:layout_marginLeft="15dp"
+            android:text="@string/button_save_expense" />
 
     </RelativeLayout>
 

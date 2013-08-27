@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	private ExpenseDbHelper dbHelper;
+	protected static ExpenseDbHelper dbHelper;
 	private static TextView textView_TotalExpensesThisMonth;
 	private static Double totalExpensesThisMonth;
 
@@ -46,7 +46,8 @@ public class MainActivity extends Activity {
     // called when user clicks on add new expense button
     public void addNewExpense(View view){
     	Intent intent = new Intent(this, AddExpenseActivity.class);
-    	startActivity(intent);
+    	startActivityForResult(intent, 1);
+    	//startActivity(intent);
     }
     
     // Show expenses - called when user clicks on show expenses button

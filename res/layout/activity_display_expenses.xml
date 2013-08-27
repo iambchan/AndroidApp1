@@ -34,7 +34,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="25"
                 android:background="@drawable/tableheader_style"
-                android:text="Date"
+                android:text="@string/table_date"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
@@ -43,7 +44,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="25"
                 android:background="@drawable/tableheader_style"
-                android:text="Cost"
+                android:text="@string/table_cost"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
@@ -52,7 +54,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="50"
                 android:background="@drawable/tableheader_style"
-                android:text="Description"
+                android:textColor="#FFFFFF"
+                android:text="@string/table_description"
                 android:textSize="18sp" />
         </TableRow>
     </TableLayout>
@@ -68,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:collapseColumns="3,4"
-            android:layout_below="@id/ExpenseTable" >
+             >
         </TableLayout>
     </ScrollView>
 

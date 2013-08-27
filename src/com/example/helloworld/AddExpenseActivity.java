@@ -15,6 +15,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.NavUtils;
 import android.text.InputFilter;
@@ -32,6 +33,7 @@ public class AddExpenseActivity extends Activity {
 
 	private ExpenseDbHelper dbHelper;
 	private static TextView text_date;
+	private double addedCost = 0;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -124,6 +126,7 @@ public class AddExpenseActivity extends Activity {
 		alertDialog.setMessage("Expense was successfully added!");
 		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
+				
 				finishActivity();
 			}
 		});
@@ -144,7 +147,10 @@ public class AddExpenseActivity extends Activity {
 	}
 
 	public void finishActivity() {
-		this.finish();
+		 Intent returnIntent = new Intent();
+		 returnIntent.putExtra("result",addedCost);
+		 setResult(RESULT_OK,returnIntent);     
+		 this.finish();
 	}
 
 	@SuppressLint("NewApi")

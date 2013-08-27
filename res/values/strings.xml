@@ -14,13 +14,22 @@
     <string name="button_save_expense">Save</string>
     <string name="button_change_date">Change</string>
     <string name="button_cancel">Cancel</string>
+    <string name="button_delete">Delete</string>
+    
     <string name="expense_cost">Cost:</string>
     <string name="expense_description">Description:</string>
     <string name="expense_type">Type:</string>
     <string name="expense_date">Date:</string>
+    
+    <!-- Table Headings -->
+    <string name="table_cost">Cost</string>
+    <string name="table_description">Description</string>
+    <string name="table_type">Type</string>
+    <string name="table_date">Date</string>
 
     <string-array name="expense_types">
         <item>Food</item>
+        <item>Groceries</item>
         <item>Transportation</item>
         <item>Utilities</item>
         <item>Home</item>

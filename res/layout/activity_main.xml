@@ -60,6 +60,15 @@
             android:text="$"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/textView_totalMonthlyExpenses"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp"
+            android:src="@drawable/bunny" />
+
     </RelativeLayout>
 
 </TableLayout>

@@ -49,7 +49,11 @@ public class ExpenseDao {
 		
 	}
 	
-	
+	public int delete(String id) {
+		String[] param = {id};
+		return db.delete(ExpenseEntry.TABLE_NAME, ExpenseEntry.COLUMN_NAME_ENTRY_ID + "=?", param);
+		
+	}
 	
 	public static abstract class ExpenseEntry implements BaseColumns {
 		public static final String TABLE_NAME = "expenses";
