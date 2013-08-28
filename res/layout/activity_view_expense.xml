@@ -8,7 +8,6 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -130,6 +129,16 @@
             android:layout_marginLeft="15dp"
             android:onClick="updateEntry"
             android:text="@string/button_save_expense" />
+
+        <Button
+            android:id="@+id/button_changeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView_description"
+            android:layout_alignLeft="@+id/button_delete"
+            android:background="@drawable/rounded_button"
+            android:onClick="showDatePicker"
+            android:text="@string/button_change_date" />
 
     </RelativeLayout>
 

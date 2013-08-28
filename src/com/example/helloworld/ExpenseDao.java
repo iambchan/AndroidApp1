@@ -23,8 +23,13 @@ public class ExpenseDao {
 		db.insert(ExpenseEntry.TABLE_NAME, null, values);
 	}
 	
-	public void update(ContentValues c, String id) {
-		String[] args = {id};
+	public void update(Expense expense) {
+		String id = Long.toString(expense.getId());
+		ContentValues c = new ContentValues();
+		c.put(ExpenseEntry.COLUMN_NAME_COST, expense.getCost());
+		c.put(ExpenseEntry.COLUMN_NAME_TYPE, expense.getType());
+		c.put(ExpenseEntry.COLUMN_NAME_DESCRIPTION, expense.getDescription());
+		c.put(ExpenseEntry.COLUMN_NAME_DATE, expense.getDate().toString());
 		db.update(ExpenseEntry.TABLE_NAME, c, ExpenseEntry.COLUMN_NAME_ENTRY_ID + "=" + id, null);
 	}
 	

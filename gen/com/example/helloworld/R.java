@@ -32,20 +32,21 @@ public final class R {
         public static final int tablerow_style=0x7f020005;
     }
     public static final class id {
-        public static final int Col_1=0x7f090018;
-        public static final int Col_2=0x7f090019;
-        public static final int Col_3=0x7f09001a;
-        public static final int Col_4=0x7f09001b;
-        public static final int Col_5=0x7f09001c;
+        public static final int Col_1=0x7f090019;
+        public static final int Col_2=0x7f09001a;
+        public static final int Col_3=0x7f09001b;
+        public static final int Col_4=0x7f09001c;
+        public static final int Col_5=0x7f09001d;
         public static final int CostLabel=0x7f09000d;
         public static final int DateLabel=0x7f09000c;
         public static final int DescriptionLabel=0x7f09000e;
         public static final int ExpenseTable=0x7f09000b;
         public static final int ExpenseTable_content=0x7f090010;
-        public static final int action_delete_data=0x7f09001e;
-        public static final int action_settings=0x7f09001d;
+        public static final int action_delete_data=0x7f09001f;
+        public static final int action_settings=0x7f09001e;
         public static final int button_add_new_expense=0x7f090012;
         public static final int button_cancel=0x7f09000a;
+        public static final int button_changeDate=0x7f090018;
         public static final int button_change_date=0x7f090002;
         public static final int button_delete=0x7f090017;
         public static final int button_save=0x7f090003;

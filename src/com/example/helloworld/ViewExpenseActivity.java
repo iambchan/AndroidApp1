@@ -1,12 +1,18 @@
 package com.example.helloworld;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import com.example.helloworld.AddExpenseActivity.DatePickerFragment;
 import com.example.helloworld.ExpenseDao.ExpenseEntry;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -97,26 +103,39 @@ public class ViewExpenseActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	public void updateEntry(View view) {
 		EditText editText = (EditText) findViewById(R.id.editText_cost);
-		String cost = editText.getText().toString();
-		if(cost.length() < 1) {
-			cost = "0";
-		}
+		String cost_string = editText.getText().toString();
+		Double cost = 0.0;
+		if(cost_string.length() > 1) {
+			cost = Double.parseDouble(cost_string);
+		} 
 		
 		editText = (EditText) findViewById(R.id.editText_Description);
 		String description = editText.getText().toString();
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_expense_types);
 		String type = spinner.getSelectedItem().toString();
 		
-		ContentValues cv = new ContentValues();
-	
-		cv.put(ExpenseEntry.COLUMN_NAME_COST, cost);
-		cv.put(ExpenseEntry.COLUMN_NAME_TYPE, type);
-		cv.put(ExpenseEntry.COLUMN_NAME_DESCRIPTION, description);
-		cv.put(ExpenseEntry.COLUMN_NAME_DATE, this.date);
+		TextView text_date = (TextView) findViewById(R.id.text_date);
+		date = text_date.getText().toString();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		Date d = null;
+		try {
+			String text_date_string = text_date.getText().toString();
+			d = (Date) sdf.parse(text_date_string);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Expense expense = new Expense();
+		expense.setCost(cost);
+		expense.setLocation(description);
+		expense.setDate(d);
+		expense.setType(type);
+		expense.setId(Long.parseLong(id));
+		
 		
 		SQLiteDatabase db = MainActivity.dbHelper.getWritableDatabase();
 		ExpenseDao expenseObj = new ExpenseDao(db);
-		expenseObj.update(cv, this.id);
+		expenseObj.update(expense);
 		
 		// Pop-up message confirming that expense was updated successfully
 		AlertDialog alertDialog_saved = new AlertDialog.Builder(this)
@@ -131,6 +150,12 @@ public class ViewExpenseActivity extends Activity {
 				});
 		alertDialog_saved.show();
 		
+	}
+	
+	@SuppressLint("NewApi")
+	public void showDatePicker(View v) {
+		DialogFragment newFragment = new DatePickerFragment();
+		newFragment.show(getFragmentManager(), "datePicker");
 	}
 	
 	private void finishActivity() {

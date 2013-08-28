@@ -32,7 +32,7 @@ import android.widget.TextView;
 public class AddExpenseActivity extends Activity {
 
 	private ExpenseDbHelper dbHelper;
-	private static TextView text_date;
+	private TextView text_date;
 	private double addedCost = 0;
 
 	@SuppressLint("NewApi")
@@ -175,8 +175,8 @@ public class AddExpenseActivity extends Activity {
 		}
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
-			text_date = (TextView) getActivity().findViewById(R.id.text_date);
-			text_date.setText(new StringBuilder().append(checkDigit(day))
+			TextView text_date1 = (TextView) getActivity().findViewById(R.id.text_date);
+			text_date1.setText(new StringBuilder().append(checkDigit(day))
 					.append("-").append(checkDigit(month + 1)).append("-")
 					.append(year).append(" "));
 		}
