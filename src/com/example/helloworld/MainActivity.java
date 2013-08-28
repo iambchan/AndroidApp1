@@ -50,6 +50,19 @@ public class MainActivity extends Activity {
     	//startActivity(intent);
     }
     
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    	  if (requestCode == 1) {
+
+    	     if(resultCode == RESULT_OK){      
+    	    	 showTotalExpensesThisMonth();       
+    	     }
+    	     if (resultCode == RESULT_CANCELED) {    
+    	         //Write your code if there's no result
+    	     }
+    	  }
+    	}//onActivityResult
+    
     // Show expenses - called when user clicks on show expenses button
     public void showExpenses(View view) {
     	Intent intent = new Intent(this, DisplayExpensesActivity.class);

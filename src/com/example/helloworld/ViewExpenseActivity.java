@@ -159,6 +159,9 @@ public class ViewExpenseActivity extends Activity {
 	}
 	
 	private void finishActivity() {
+		Intent intent = new Intent(getApplicationContext(), MainActivity.class);    
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                    
+		startActivity(intent);
 		this.finish();
 	}
 

@@ -93,7 +93,8 @@ public class AddExpenseActivity extends Activity {
 		
 		EditText editText = (EditText) findViewById(R.id.editText_cost);
 		String cost_string = editText.getText().toString();
-		if(cost_string.length() > 1) {
+		int costLength = cost_string.length();
+		if(cost_string.length() > 0) {
 
 		double cost = Double.parseDouble(cost_string);
 		editText = (EditText) findViewById(R.id.editText_Description);
@@ -146,9 +147,7 @@ public class AddExpenseActivity extends Activity {
 	}
 
 	public void finishActivity() {
-		 Intent returnIntent = new Intent();
-		 returnIntent.putExtra("result",addedCost);
-		 setResult(RESULT_OK,returnIntent);     
+		 setResult(RESULT_OK,null);     
 		 this.finish();
 	}
 
