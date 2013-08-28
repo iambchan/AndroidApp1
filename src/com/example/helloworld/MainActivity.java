@@ -1,13 +1,7 @@
 package com.example.helloworld;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import com.example.helloworld.R;
 
 import android.app.Activity;

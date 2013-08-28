@@ -6,8 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import com.example.helloworld.R;
+import com.example.helloworld.AddExpenseActivity.DatePickerFragment;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -140,6 +143,12 @@ public class DisplayExpensesActivity extends Activity {
     	Intent intent = new Intent(this, ViewExpenseActivity.class);
     	intent.putStringArrayListExtra("selectedExpense", selectedRow);
     	startActivity(intent);
+	}
+	
+	@SuppressLint("NewApi")
+	public void changeSearchMY(View v) {
+		DialogFragment newFragment = new DatePickerFragment();
+		newFragment.show(getFragmentManager(), "datePicker");
 	}
 
 }

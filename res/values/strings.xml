@@ -7,6 +7,9 @@
     <string name="title_activity_view_expense">Expense Details</string>
     <string name="action_settings">Settings</string>
     <string name="action_delete_data">Delete All Data</string>
+    <string name="text_total_expenses">Total Expenses This Month:</string>
+    <string name="logo_description">Logo of My Expense Tracker</string>
+    <string name="currency_sign">$</string>
     
     <string name="title_activity_main">MainActivity</string>
     <string name="button_add_expense">Add New Expense</string>

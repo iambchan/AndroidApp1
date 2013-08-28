@@ -1,74 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:layout_weight="0.48" >
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/button_show_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.48" >
+        android:layout_above="@+id/button_add_new_expense"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="showExpenses"
+        android:text="@string/button_view_expenses" />
 
-        <Button
-            android:id="@+id/button_show_expenses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/button_add_new_expense"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:onClick="showExpenses"
-            android:background="@drawable/rounded_button"
-            android:text="@string/button_view_expenses" />
+    <TextView
+        android:id="@+id/textView_dollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_totalAmt"
+        android:layout_alignBottom="@+id/textView_totalAmt"
+        android:layout_toLeftOf="@+id/button_add_new_expense"
+        android:text="@string/currency_sign"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Button
-            android:id="@+id/button_add_new_expense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/rounded_button"
-            android:onClick="addNewExpense"
-            android:text="@string/button_add_expense" />
+    <Button
+        android:id="@+id/button_add_new_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addNewExpense"
+        android:text="@string/button_add_expense" />
 
-        <TextView
-            android:id="@+id/textView_totalMonthlyExpenses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/button_show_expenses"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="83dp"
-            android:text="Total Expenses This Month:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/textView_totalAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_show_expenses"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/textView_totalAmt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView_totalMonthlyExpenses"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/textView_totalMonthlyExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView_dollarSign"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/text_total_expenses"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/textView_dollarSign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView_totalAmt"
-            android:layout_alignBottom="@+id/textView_totalAmt"
-            android:layout_toLeftOf="@+id/button_add_new_expense"
-            android:text="$"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/textView_totalMonthlyExpenses"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/bunny" />
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_above="@+id/textView_totalMonthlyExpenses"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="23dp"
-            android:src="@drawable/bunny" />
-
-    </RelativeLayout>
-
-</TableLayout>
+</RelativeLayout>

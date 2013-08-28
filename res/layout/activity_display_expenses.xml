@@ -8,57 +8,65 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DisplayExpensesActivity" >
 
-    <Spinner
-        android:id="@+id/spinner_expense_types"
+    <TextView
+        android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:entries="@array/expense_types"
-        android:spinnerMode="dialog" />
+        android:layout_alignBaseline="@+id/button_change_search_MonYr"
+        android:layout_alignBottom="@+id/button_change_search_MonYr"
+        android:layout_alignLeft="@+id/ExpenseTable"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TableLayout
+    <Button
+        android:id="@+id/button_change_search_MonYr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/ExpenseTable"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="changeSearchMY"
+        android:text="@string/button_change_date" />
+
+    <TableRow
         android:id="@+id/ExpenseTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spinner_expense_types"
+        android:layout_below="@id/button_change_search_MonYr"
         android:background="@drawable/tablerow_style"
+        android:clickable="true"
         android:padding="5dp" >
 
-        <TableRow
+        <TextView
+            android:id="@+id/DateLabel"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:clickable="true" >
+            android:layout_weight="25"
+            android:background="@drawable/tableheader_style"
+            android:text="@string/table_date"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/DateLabel"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="@drawable/tableheader_style"
-                android:text="@string/table_date"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/CostLabel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/tableheader_style"
+            android:text="@string/table_cost"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/CostLabel"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:background="@drawable/tableheader_style"
-                android:text="@string/table_cost"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/DescriptionLabel"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="50"
-                android:background="@drawable/tableheader_style"
-                android:textColor="#FFFFFF"
-                android:text="@string/table_description"
-                android:textSize="18sp" />
-        </TableRow>
-    </TableLayout>
+        <TextView
+            android:id="@+id/DescriptionLabel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@drawable/tableheader_style"
+            android:text="@string/table_description"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </TableRow>
 
     <ScrollView
         android:id="@+id/scrollView_expenseContent"
@@ -70,8 +78,7 @@
             android:id="@+id/ExpenseTable_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:collapseColumns="3,4"
-             >
+            android:collapseColumns="3,4" >
         </TableLayout>
     </ScrollView>
 
