@@ -1,5 +1,7 @@
 package com.example.helloworld;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -47,8 +49,13 @@ public class ExpenseDao {
 	// Gets the cost column of all expenses in given month
 	public Cursor queryCurMonth_expenses(String month, String year) {
 		//"SELECT * FROM EXPENSES WHERE DATE LIKE \"%Aug%\"";
-		String[] colsToSelect = new String[] { ExpenseEntry.COLUMN_NAME_COST, ExpenseEntry.COLUMN_NAME_DATE };
-		return db.query(ExpenseEntry.TABLE_NAME, colsToSelect, "date like ?" , new String[]{"%"+month+"%"+year}, null, null, null);
+		// String[] colsToSelect = new String[] { ExpenseEntry.COLUMN_NAME_COST, ExpenseEntry.COLUMN_NAME_DATE };
+		return db.query(ExpenseEntry.TABLE_NAME, null, "date like ?" , new String[]{"%"+month+"%"+year}, null, null, null);
+	}
+	
+	public Cursor queryDistinctDates() {
+		// SELECT DISTINCT DATE FROM EXPENSES
+		return db.query(true, ExpenseEntry.TABLE_NAME, new String[]{"date"}, null, null, null, null, null, null, null);
 	}
 
 	

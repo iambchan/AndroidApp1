@@ -9,30 +9,56 @@
     tools:context=".DisplayExpensesActivity" >
 
     <TextView
-        android:id="@+id/text_date"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button_change_search_MonYr"
-        android:layout_alignBottom="@+id/button_change_search_MonYr"
-        android:layout_alignLeft="@+id/ExpenseTable"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/button_change_search_MonYr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@id/ExpenseTable"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_button"
-        android:onClick="changeSearchMY"
-        android:text="@string/button_change_date" />
+        android:layout_marginTop="10dp"
+        android:text="Viewing Expenses For: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RelativeLayout
+        android:id="@+id/changeSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1" >
+
+        <Spinner
+            android:id="@+id/spinner_month"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/months"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/spinner_year"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/spinner_month"
+            android:layout_toRightOf="@+id/spinner_month"
+            android:entries="@array/months"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/button_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/spinner_year"
+            android:layout_toRightOf="@+id/spinner_year"
+            android:background="@drawable/rounded_button"
+            android:layout_marginLeft="20dp"
+            android:text="Refresh"
+            android:onClick="refreshTable"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </RelativeLayout>
 
     <TableRow
         android:id="@+id/ExpenseTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_change_search_MonYr"
+        android:layout_below="@id/changeSearch"
+        android:layout_marginTop="20dp"
         android:background="@drawable/tablerow_style"
         android:clickable="true"
         android:padding="5dp" >

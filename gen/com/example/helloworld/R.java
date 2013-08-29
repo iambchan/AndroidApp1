@@ -10,6 +10,7 @@ package com.example.helloworld;
 public final class R {
     public static final class array {
         public static final int expense_types=0x7f060000;
+        public static final int months=0x7f060001;
     }
     public static final class attr {
     }
@@ -32,37 +33,41 @@ public final class R {
         public static final int tablerow_style=0x7f020005;
     }
     public static final class id {
-        public static final int Col_1=0x7f09001a;
-        public static final int Col_2=0x7f09001b;
-        public static final int Col_3=0x7f09001c;
-        public static final int Col_4=0x7f09001d;
-        public static final int Col_5=0x7f09001e;
-        public static final int CostLabel=0x7f09000e;
-        public static final int DateLabel=0x7f09000d;
-        public static final int DescriptionLabel=0x7f09000f;
-        public static final int ExpenseTable=0x7f09000c;
-        public static final int ExpenseTable_content=0x7f090011;
-        public static final int action_delete_data=0x7f090020;
-        public static final int action_settings=0x7f09001f;
-        public static final int button_add_new_expense=0x7f090013;
+        public static final int Col_1=0x7f09001e;
+        public static final int Col_2=0x7f09001f;
+        public static final int Col_3=0x7f090020;
+        public static final int Col_4=0x7f090021;
+        public static final int Col_5=0x7f090022;
+        public static final int CostLabel=0x7f090012;
+        public static final int DateLabel=0x7f090011;
+        public static final int DescriptionLabel=0x7f090013;
+        public static final int ExpenseTable=0x7f090010;
+        public static final int ExpenseTable_content=0x7f090015;
+        public static final int action_delete_data=0x7f090024;
+        public static final int action_settings=0x7f090023;
+        public static final int button_add_new_expense=0x7f090017;
         public static final int button_cancel=0x7f09000a;
-        public static final int button_changeDate=0x7f090019;
+        public static final int button_changeDate=0x7f09001d;
         public static final int button_change_date=0x7f090002;
-        public static final int button_change_search_MonYr=0x7f09000b;
-        public static final int button_delete=0x7f090018;
+        public static final int button_delete=0x7f09001c;
+        public static final int button_refresh=0x7f09000f;
         public static final int button_save=0x7f090003;
-        public static final int button_show_expenses=0x7f090012;
+        public static final int button_show_expenses=0x7f090016;
+        public static final int changeSearch=0x7f09000c;
         public static final int editText_Description=0x7f090005;
         public static final int editText_cost=0x7f090007;
-        public static final int imageView1=0x7f090017;
-        public static final int scrollView_expenseContent=0x7f090010;
+        public static final int imageView1=0x7f09001b;
+        public static final int scrollView_expenseContent=0x7f090014;
         public static final int spinner_expense_types=0x7f090009;
+        public static final int spinner_month=0x7f09000d;
+        public static final int spinner_year=0x7f09000e;
+        public static final int textView1=0x7f09000b;
         public static final int textView_cost=0x7f090006;
         public static final int textView_date=0x7f090000;
         public static final int textView_description=0x7f090004;
-        public static final int textView_dollarSign=0x7f090014;
-        public static final int textView_totalAmt=0x7f090015;
-        public static final int textView_totalMonthlyExpenses=0x7f090016;
+        public static final int textView_dollarSign=0x7f090018;
+        public static final int textView_totalAmt=0x7f090019;
+        public static final int textView_totalMonthlyExpenses=0x7f09001a;
         public static final int textView_type=0x7f090008;
         public static final int text_date=0x7f090001;
     }
@@ -94,7 +99,6 @@ public final class R {
         public static final int expense_date=0x7f050013;
         public static final int expense_description=0x7f050011;
         public static final int expense_type=0x7f050012;
-        public static final int hello_world=0x7f050018;
         public static final int logo_description=0x7f050007;
         /**  Table Headings 
          */

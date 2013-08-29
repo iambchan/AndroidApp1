@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
     	totalExpensesThisMonth = 0.0;
     	 cursor.moveToFirst();
          while (!cursor.isAfterLast()) {
-        	 Double cost = cursor.getDouble(0);
+        	 Double cost = cursor.getDouble(2);
            totalExpensesThisMonth += cost;
            cursor.moveToNext();
          }

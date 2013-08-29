@@ -161,5 +161,7 @@ public class ViewExpenseActivity extends Activity {
 		startActivity(intent);
 		this.finish();
 	}
+	
+	
 
 }

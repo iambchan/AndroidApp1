@@ -4,13 +4,11 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import com.example.helloworld.R;
-import com.example.helloworld.AddExpenseActivity.DatePickerFragment;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +18,8 @@ import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,7 +27,8 @@ import android.widget.TextView;
 public class DisplayExpensesActivity extends Activity {
 
 	private ExpenseDbHelper dbHelper;
-	
+	private ExpenseDao expenseObj = null;
+
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +40,28 @@ public class DisplayExpensesActivity extends Activity {
 
 		dbHelper = new ExpenseDbHelper(getApplicationContext());
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		ExpenseDao expenseObj = new ExpenseDao(db);
+		expenseObj = new ExpenseDao(db);
 		Cursor c = expenseObj.query();
-		int numExpenses = c.getCount();
-		ArrayList<Expense> expenses = getAllExpenses(c);
+		populateYearField();
+		setSpinnerCurrentMonth();
 
+		ArrayList<Expense> expenses = getAllExpenses(c);
+		populateTable(expenses);
+	}
+	
+	private void populateTable(ArrayList<Expense> expenses) {
 		Expense e = null;
 		TableLayout tbl = (TableLayout) findViewById(R.id.ExpenseTable_content);
-		for (int i = 0; i < numExpenses; i++) {
+		for (int i = 0; i < expenses.size(); i++) {
 			e = expenses.get(i);
 			if (e != null) {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 				String formattedDate = sdf.format(e.getDate());
 				String cost = new DecimalFormat("##.00").format(e.getCost());
-				addNewRow(tbl, formattedDate, cost,
-						e.getDescription(),Long.toString(e.getId()), e.getType());
+				addNewRow(tbl, formattedDate, cost, e.getDescription(),
+						Long.toString(e.getId()), e.getType());
 			}
 		}
-
 	}
 
 	private void addNewRow(TableLayout tbl, String date, String cost,
@@ -109,7 +114,8 @@ public class DisplayExpensesActivity extends Activity {
 			date = sdf.parse(d);
 		} catch (ParseException e) {
 			e.printStackTrace();
-		};
+		}
+		;
 		return date;
 	}
 
@@ -122,33 +128,89 @@ public class DisplayExpensesActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
 
 	public void onRowClick(View view) {
 		TableRow t = (TableRow) view;
-	    TextView textView0 = (TextView) t.getChildAt(0);
-	    TextView textView1 = (TextView) t.getChildAt(1);
-	    TextView textView2 = (TextView) t.getChildAt(2);
-	    TextView textView3 = (TextView) t.getChildAt(3);
-	    TextView textView4 = (TextView) t.getChildAt(4);
-	    ArrayList<String> selectedRow = new ArrayList<String>();
-	    
-	    selectedRow.add(textView0.getText().toString());
-	    selectedRow.add(textView1.getText().toString());
-	    selectedRow.add(textView2.getText().toString());
-	    selectedRow.add(textView3.getText().toString());
-	    selectedRow.add(textView4.getText().toString());
-	    
-	    
-    	Intent intent = new Intent(this, ViewExpenseActivity.class);
-    	intent.putStringArrayListExtra("selectedExpense", selectedRow);
-    	startActivity(intent);
+		TextView textView0 = (TextView) t.getChildAt(0);
+		TextView textView1 = (TextView) t.getChildAt(1);
+		TextView textView2 = (TextView) t.getChildAt(2);
+		TextView textView3 = (TextView) t.getChildAt(3);
+		TextView textView4 = (TextView) t.getChildAt(4);
+		ArrayList<String> selectedRow = new ArrayList<String>();
+
+		selectedRow.add(textView0.getText().toString());
+		selectedRow.add(textView1.getText().toString());
+		selectedRow.add(textView2.getText().toString());
+		selectedRow.add(textView3.getText().toString());
+		selectedRow.add(textView4.getText().toString());
+
+		Intent intent = new Intent(this, ViewExpenseActivity.class);
+		intent.putStringArrayListExtra("selectedExpense", selectedRow);
+		startActivity(intent);
 	}
 	
-	@SuppressLint("NewApi")
-	public void changeSearchMY(View v) {
-		DialogFragment newFragment = new DatePickerFragment();
-		newFragment.show(getFragmentManager(), "datePicker");
+	// Sets the month spinner to current month
+	public void setSpinnerCurrentMonth() {
+		int curMonth = Calendar.getInstance().get(Calendar.MONTH);
+		Spinner monthSpinner = (Spinner) findViewById(R.id.spinner_month);
+		monthSpinner.setSelection(curMonth - 1);
 	}
+
+	// Populates the year spinner with years found in the database
+	public void populateYearField() {
+		Cursor cursor = expenseObj.queryDistinctDates();
+		ArrayList<Integer> years = new ArrayList<Integer>();
+		int curYear = Calendar.getInstance().get(Calendar.YEAR);
+		years.add(curYear);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Date date = convertStringToDate(cursor.getString(0));
+			int year = date.getYear() + 1900;
+			if (!years.contains(year))
+				years.add(year);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		Spinner yearSpinner = (Spinner) findViewById(R.id.spinner_year);
+		ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(
+				this, android.R.layout.simple_spinner_item, years);
+		yearSpinner.setAdapter(spinnerArrayAdapter);
+		// the first item on our spinner list is the current year which we
+		// manually added as default
+		//int index = findCurYrIndex(yearSpinner, curYear);
+		yearSpinner.setSelection(0);
+	}
+	
+	private int findCurYrIndex(Spinner yearSpinner, int currentYr) {
+		// Finds the index of the current year in the spinner
+		// loop through spinner and find index of currentYr
+		for(int i=0; i<yearSpinner.getCount(); i++) {
+			int spinnerYr = (Integer) yearSpinner.getAdapter().getItem(i);
+			if(spinnerYr == currentYr) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public void refreshTable(View view) {
+		// Get spinners for month and year
+		Spinner yearSpinner = (Spinner) findViewById(R.id.spinner_year);
+		String year = yearSpinner.getSelectedItem().toString();
+		
+		Spinner monthSpinner = (Spinner) findViewById(R.id.spinner_month);
+		String month = monthSpinner.getSelectedItem().toString();
+		
+		// Run sql query
+		Cursor cursor = expenseObj.queryCurMonth_expenses(month, year);
+		ArrayList<Expense> expenses = getAllExpenses(cursor);
+		TableLayout table = (TableLayout) findViewById(R.id.ExpenseTable_content);       
+		table.removeAllViews();
+		populateTable(expenses);
+		
+		
+		// Re-populate expense table
+	}
+
 
 }
