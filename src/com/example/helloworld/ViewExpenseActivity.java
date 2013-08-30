@@ -113,7 +113,7 @@ public class ViewExpenseActivity extends Activity {
 		
 		TextView text_date = (TextView) findViewById(R.id.text_date);
 		date = text_date.getText().toString();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
 		Date d = null;
 		try {
 			String text_date_string = text_date.getText().toString();
