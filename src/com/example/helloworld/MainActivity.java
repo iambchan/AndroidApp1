@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import com.example.helloworld.R;
 
@@ -15,10 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
 	protected static ExpenseDbHelper dbHelper;
+	private ExpenseDao expenseObj;
 	private static TextView textView_TotalExpensesThisMonth;
 	private static Double totalExpensesThisMonth;
 
@@ -91,7 +94,7 @@ public class MainActivity extends Activity {
     	String currentYear = Integer.toString(currentYear_int);
     	
     	SQLiteDatabase db = dbHelper.getReadableDatabase();
-    	ExpenseDao expenseObj = new ExpenseDao(db);
+    	expenseObj = new ExpenseDao(db);
     	Cursor cursor = expenseObj.queryCurMonth_expenses(currentMonth, currentYear);
     	//Cursor cursor = expenseObj.queryByMonth();
     	// Add up all of this month's expenses
@@ -143,6 +146,54 @@ public class MainActivity extends Activity {
         return monthString;
 	}
 	
+	public void emailData() {
+		Cursor cursor = expenseObj.query();
+		ArrayList<Expense> expenses = DisplayExpensesActivity.getAllExpenses(cursor);
+		String email = composeEmail(expenses); 
+		
+		Intent i = new Intent(Intent.ACTION_SEND);
+		i.setType("message/rfc822");
+		//i.putExtra(Intent.EXTRA_EMAIL, new String[]{"chanbessie@gmail.com"});
+		i.putExtra(Intent.EXTRA_SUBJECT, "My Expense Tracker: Expense Records");
+		i.putExtra(Intent.EXTRA_TEXT, email);
+		
+		try {
+			startActivity(Intent.createChooser(i, "Send mail..."));
+		} catch (android.content.ActivityNotFoundException ex) {
+			Toast.makeText(MainActivity.this, "There are no email clients installed", Toast.LENGTH_SHORT).show();
+		}
+		
+	}
+	
+	private String composeEmail(ArrayList<Expense> expenses) {
+		String email = "";
+		String eol = System.getProperty("line.separator");
+		String date, cost, description, type;
+		date = "Date";
+		cost = "Cost";
+		description = "Description";
+		type = "type";
+		String formatter = "%-15s%-20s%-70s%-20s";
+		email = "Expense records sent from My Expense Tracker App" + eol;
+		String expense = String.format(formatter, date, cost, description, type);
+		email = email + expense + eol; // headings
+		email = email + "-------------------------------------------------------------" +
+				"------------------------------------------------------------------------------------" + eol;
+		String temp;
+		Expense e;
+		for(int i = 0; i < expenses.size(); i++) {
+			e = expenses.get(i);
+			date = DisplayExpensesActivity.convertDateToString(e.getDate());
+			cost = Double.toString(e.getCost());
+			description = e.getDescription();
+			type = e.getType();
+			expense = String.format(formatter, date, cost, description, type);
+			email = email + expense + eol;
+		}
+		return email;
+		
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
@@ -150,8 +201,8 @@ public class MainActivity extends Activity {
 	    case R.id.action_delete_data:
 	    	deleteAllExpenses(this.findViewById(android.R.id.content));
 	        return true;
-	    case R.id.action_settings:
-	        
+	    case R.id.action_email_data:
+	    	emailData();
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);

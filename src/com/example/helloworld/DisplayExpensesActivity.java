@@ -83,7 +83,7 @@ public class DisplayExpensesActivity extends Activity {
 		tbl.addView(newRow);
 	}
 
-	public ArrayList<Expense> getAllExpenses(Cursor cursor) {
+	public static ArrayList<Expense> getAllExpenses(Cursor cursor) {
 		ArrayList<Expense> expenses = new ArrayList<Expense>();
 
 		cursor.moveToFirst();
@@ -96,7 +96,7 @@ public class DisplayExpensesActivity extends Activity {
 		return expenses;
 	}
 
-	private Expense cursorToExpense(Cursor cursor) {
+	public static Expense cursorToExpense(Cursor cursor) {
 		Expense expense = new Expense();
 		expense.setId(cursor.getLong(0));
 		expense.setCost(cursor.getDouble(2));
@@ -106,7 +106,12 @@ public class DisplayExpensesActivity extends Activity {
 		return expense;
 	}
 
-	public Date convertStringToDate(String d) {
+	public static String convertDateToString(Date d) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+		return sdf.format(d);
+	}
+	
+	public static Date convertStringToDate(String d) {
 		SimpleDateFormat sdf = new SimpleDateFormat(
 				"EEE MMM dd HH:mm:ss z yyyy");
 		Date date = new Date();

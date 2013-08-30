@@ -45,6 +45,7 @@ public final class R {
         public static final int ExpenseTable=0x7f090010;
         public static final int ExpenseTable_content=0x7f090015;
         public static final int action_delete_data=0x7f090024;
+        public static final int action_email_data=0x7f090025;
         public static final int action_settings=0x7f090023;
         public static final int button_add_new_expense=0x7f090017;
         public static final int button_cancel=0x7f09000a;
@@ -87,30 +88,31 @@ public final class R {
     }
     public static final class string {
         public static final int action_delete_data=0x7f050005;
+        public static final int action_email_data=0x7f050006;
         public static final int action_settings=0x7f050004;
         public static final int app_name=0x7f050000;
-        public static final int button_add_expense=0x7f05000a;
-        public static final int button_cancel=0x7f05000e;
-        public static final int button_change_date=0x7f05000d;
-        public static final int button_delete=0x7f05000f;
-        public static final int button_save_expense=0x7f05000c;
-        public static final int button_view_expenses=0x7f05000b;
-        public static final int currency_sign=0x7f050008;
-        public static final int expense_cost=0x7f050010;
-        public static final int expense_date=0x7f050013;
-        public static final int expense_description=0x7f050011;
-        public static final int expense_type=0x7f050012;
-        public static final int logo_description=0x7f050007;
+        public static final int button_add_expense=0x7f05000b;
+        public static final int button_cancel=0x7f05000f;
+        public static final int button_change_date=0x7f05000e;
+        public static final int button_delete=0x7f050010;
+        public static final int button_save_expense=0x7f05000d;
+        public static final int button_view_expenses=0x7f05000c;
+        public static final int currency_sign=0x7f050009;
+        public static final int expense_cost=0x7f050011;
+        public static final int expense_date=0x7f050014;
+        public static final int expense_description=0x7f050012;
+        public static final int expense_type=0x7f050013;
+        public static final int logo_description=0x7f050008;
         /**  Table Headings 
          */
-        public static final int table_cost=0x7f050014;
-        public static final int table_date=0x7f050017;
-        public static final int table_description=0x7f050015;
-        public static final int table_type=0x7f050016;
-        public static final int text_total_expenses=0x7f050006;
+        public static final int table_cost=0x7f050015;
+        public static final int table_date=0x7f050018;
+        public static final int table_description=0x7f050016;
+        public static final int table_type=0x7f050017;
+        public static final int text_total_expenses=0x7f050007;
         public static final int title_activity_add_expense=0x7f050001;
         public static final int title_activity_display_message=0x7f050002;
-        public static final int title_activity_main=0x7f050009;
+        public static final int title_activity_main=0x7f05000a;
         public static final int title_activity_view_expense=0x7f050003;
     }
     public static final class style {
