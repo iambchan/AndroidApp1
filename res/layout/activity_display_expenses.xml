@@ -28,7 +28,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:entries="@array/months"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dialog"/>
 
         <Spinner
             android:id="@+id/spinner_year"

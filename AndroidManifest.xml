@@ -42,6 +42,10 @@
             android:name="com.example.helloworld.ViewExpenseActivity"
             android:label="@string/title_activity_view_expense" >
         </activity>
+        <activity
+            android:name="com.example.helloworld.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

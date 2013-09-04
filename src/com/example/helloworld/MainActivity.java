@@ -147,16 +147,31 @@ public class MainActivity extends Activity {
         return monthString;
 	}
 	
-	public void emailData() {
+	public void emailSupport() {
+		String subject = "My Expense Tracker Support";
+		String toAddress = "bchan.android.help@gmail.com";
+		create_email(subject, null, toAddress );
+	}
+	
+	
+	// send an email with backup data
+	public void emailBackUpData() {
 		Cursor cursor = expenseObj.query();
 		ArrayList<Expense> expenses = DisplayExpensesActivity.getAllExpenses(cursor);
 		String email = composeEmail(expenses); 
+		create_email("My Expense Tracker: Expense Records", email, null);
+	}
+	
+	
+	public void create_email(String subject, String email, String toAddress) {
 		
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
-		//i.putExtra(Intent.EXTRA_EMAIL, new String[]{"chanbessie@gmail.com"});
-		i.putExtra(Intent.EXTRA_SUBJECT, "My Expense Tracker: Expense Records");
-		i.putExtra(Intent.EXTRA_TEXT, email);
+		i.putExtra(Intent.EXTRA_SUBJECT, subject);
+		if(email != null)
+			i.putExtra(Intent.EXTRA_TEXT, email);
+		if(toAddress != null)
+			i.putExtra(Intent.EXTRA_EMAIL, new String[]{toAddress});
 		
 		try {
 			startActivity(Intent.createChooser(i, "Send mail..."));
@@ -195,15 +210,27 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	public void viewAboutPage() {
+		// TODO Auto-generated constructor stub
+		Intent intent = new Intent(this, AboutActivity.class);
+    	startActivity(intent);
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
+	    case R.id.action_about:
+	    	viewAboutPage();
+	    	return true;
 	    case R.id.action_delete_data:
 	    	deleteAllExpenses(this.findViewById(android.R.id.content));
 	        return true;
 	    case R.id.action_email_data:
-	    	emailData();
+	    	emailBackUpData();
+	        return true;
+	    case R.id.action_email_support:
+	    	emailSupport();
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
