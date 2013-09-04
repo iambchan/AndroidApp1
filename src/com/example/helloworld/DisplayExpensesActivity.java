@@ -41,7 +41,8 @@ public class DisplayExpensesActivity extends Activity {
 		dbHelper = new ExpenseDbHelper(getApplicationContext());
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		expenseObj = new ExpenseDao(db);
-		Cursor c = expenseObj.query();
+		//Cursor c = expenseObj.query();
+		Cursor c = expenseObj.queryCurMonth_expenses(MainActivity.currentMonth, MainActivity.currentYear);
 		populateYearField();
 		setSpinnerCurrentMonth();
 
@@ -175,6 +176,7 @@ public class DisplayExpensesActivity extends Activity {
 				years.add(year);
 			cursor.moveToNext();
 		}
+
 		cursor.close();
 		Spinner yearSpinner = (Spinner) findViewById(R.id.spinner_year);
 		ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(
@@ -207,7 +209,10 @@ public class DisplayExpensesActivity extends Activity {
 		String month = monthSpinner.getSelectedItem().toString();
 		
 		// Run sql query
-		Cursor cursor = expenseObj.queryCurMonth_expenses(month, year);
+		Cursor cursor;
+		if(month.equalsIgnoreCase("All"))
+			cursor = expenseObj.queryYearly_expenses(year);
+		else cursor  = expenseObj.queryCurMonth_expenses(month, year);
 		ArrayList<Expense> expenses = getAllExpenses(cursor);
 		TableLayout table = (TableLayout) findViewById(R.id.ExpenseTable_content);       
 		table.removeAllViews();

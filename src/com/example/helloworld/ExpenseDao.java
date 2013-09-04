@@ -46,11 +46,16 @@ public class ExpenseDao {
 		return db.query(ExpenseEntry.TABLE_NAME, null,"date like ?" , new String[]{"%"+"Aug"+"%"+"2013"}, null, null, null);
 	}
 	
-	// Gets the cost column of all expenses in given month
+	// Gets expenses from given month and year
 	public Cursor queryCurMonth_expenses(String month, String year) {
 		//"SELECT * FROM EXPENSES WHERE DATE LIKE \"%Aug%\"";
 		// String[] colsToSelect = new String[] { ExpenseEntry.COLUMN_NAME_COST, ExpenseEntry.COLUMN_NAME_DATE };
 		return db.query(ExpenseEntry.TABLE_NAME, null, "date like ?" , new String[]{"%"+month+"%"+year}, null, null, null);
+	}
+	
+	// Gets expenses from the given year
+	public Cursor queryYearly_expenses(String year) {
+		return db.query(ExpenseEntry.TABLE_NAME, null, "date like ?" , new String[]{"%"+year}, null, null, null);
 	}
 	
 	public Cursor queryDistinctDates() {

@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 	private ExpenseDao expenseObj;
 	private static TextView textView_TotalExpensesThisMonth;
 	private static Double totalExpensesThisMonth;
+	protected static String currentYear, currentMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +90,9 @@ public class MainActivity extends Activity {
     public void showTotalExpensesThisMonth() {
     	// Get current Month and Year
     	int currentMonth_int = Calendar.getInstance().get(Calendar.MONTH) + 1;
-    	String currentMonth = getMonString(currentMonth_int);
+    	currentMonth = getMonString(currentMonth_int);
     	int currentYear_int = Calendar.getInstance().get(Calendar.YEAR);
-    	String currentYear = Integer.toString(currentYear_int);
+    	currentYear = Integer.toString(currentYear_int);
     	
     	SQLiteDatabase db = dbHelper.getReadableDatabase();
     	expenseObj = new ExpenseDao(db);
